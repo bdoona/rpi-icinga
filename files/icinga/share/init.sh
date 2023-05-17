@@ -5,7 +5,7 @@
 
 ISMYSQL=0
 HTUSER=${HTUSER:-icingaadmin}
-HTPASS=${HTUSER:-icingaadmin}
+HTPASS=${HTPASS:-icingaadmin}
 
 createDatabase() {
   echo creating database tables
@@ -92,7 +92,7 @@ EOF
 
 setHtPasswd(){
   HTFILE=/etc/icinga/htpasswd.users
-  [[ -w ${HTFILE} ]] && htpasswd -cb ${HTFILE} ${HTUSER} ${HTPASS} || echo
+  [[ ! -x ${HTFILE} ]] && htpasswd -cb ${HTFILE} ${HTUSER} ${HTPASS} || echo
 }
 
 setCheckCommands(){
